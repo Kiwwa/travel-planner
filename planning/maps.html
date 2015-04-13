@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Testing Maps</title>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=places"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="maps.js"></script>
+  <script src="places.js"></script>
+</head>
+<body>
+
+  <img src="https://maps.googleapis.com/maps/api/staticmap?center=Sydney,NSW&amp;zoom=11&amp;size=600x300" alt="">
+  <img src="https://maps.googleapis.com/maps/api/staticmap?center=London&amp;zoom=11&amp;size=300x150&amp;scale=2" alt="">
+  <img src="https://maps.googleapis.com/maps/api/staticmap?center=Melbourne,VIC&amp;zoom=11&amp;size=600x300" alt="">
+  
+  <div id="map_canvas" style="width:700px; height:500px;" ></div>
+
+  <form action="">
+    <label for="">Search...</label>
+    <input id="autocomplete" type="text" onfocus="geolocate()">
+    <br>
+
+    <label for="">Latitude</label>
+    <input id="latitude" type="text">
+    <br>
+
+    <label for="">Longitude</label>
+    <input id="longitude" type="text">
+    <br>
+
+    <label for="">Street Number</label>
+    <input id="street_number" type="text">
+    <br>
+
+    <label for="">Route</label>
+    <input id="route" type="text">
+    <br>
+
+    <label for="">Locality</label>
+    <input id="locality" type="text">
+    <br>
+
+    <label for="">Admin Area</label>
+    <input id="administrative_area_level_1" type="text">
+    <br>
+
+    <label for="">Country</label>
+    <input id="country" type="text">
+    <br>
+
+    <label for="">Postal Code</label>
+    <input id="postal_code" type="text">
+    <br>
+  </form>
+
+</body>
+</html>
