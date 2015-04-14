@@ -1,0 +1,35 @@
+<div class="span-12" id="mobile-splash-top">
+  <h1>Travelling? Awesome.</h1>
+  <h2>Where to first?...</h2>
+</div>
+
+
+<div class="span-12">
+  <div id="search-box">
+    <div id="search-textbox">
+      <form action="">
+        <input id="autocomplete" type="text">
+        <div id="search-orange" onclick="testfunc()"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="span-12" id="mobile-content-container">
+  <button>DONE</button>
+</div>
+
+<div class="span-12" id="mobile-content-testarea">
+  <p>Trip ID: <%= @test_trip.id %></p>
+  <p>Trip assc. places: <%= @test_trip.places.ids %></p>
+  <p>Place ID: <%= @test_place.id %></p>
+  <p>Location ID: <%= @test_location.id %></p>
+</div>
+
+<script>
+  function testfunc() {
+    var $search_text = $('#autocomplete').val();
+    console.log($search_text);
+    $('#mobile-content-container').append($search_text);
+  }
+</script>

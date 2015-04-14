@@ -1,0 +1,177 @@
+/*\
+| | apply a natural box layout model to all elements,
+| | but allowing components to change
+\*/
+html {
+  height: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: sans-serif;
+  background: url("http://localhost:4567/img/cover-2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: black;
+}
+
+/*------------------------
+  DIV span sizings
+------------------------*/
+
+.span-1, .span-2, .span-3, .span-4, .span-5 {
+  display: inline-block;
+}
+
+.span-1 {
+  width: 8.3333333333%;
+}
+
+.span-2 {
+  width: 16.666666667%;
+}
+
+.span-3 {
+  width: 25%;
+}
+
+.span-4 {
+  width: 33.333333333%;
+}
+
+.span-5 {
+  width: 41.666666667%;
+}
+
+.span-6 {
+  width: 50%;
+}
+
+.span-7 {
+  width: 58.333333333%;
+}
+
+.span-8 {
+  width: 66.666666666%;
+}
+
+.span-9 {
+  width: 75%;
+}
+
+.span-10 {
+  width: 83.333333333%;
+}
+
+.span-11 {
+  width: 91.666666666%;
+}
+
+.span-12 {
+  width: 100%;
+}
+
+/*------------------------
+  Individual Elements
+------------------------*/
+
+#splash-container {
+  width: 90%;
+  margin: 0 auto;
+  vertical-align: middle;
+  text-align: center;
+  background-color: rgba(220,220,220,0.8);
+  border: 2px black solid;
+  border-radius: 14px;
+}
+
+#splash-container h1 {
+  font-size: 3em;
+}
+
+#splash-container form > input[type="text"] {
+  display: block;
+  text-align: center;
+}
+
+/*------------------------
+  Mobile Elements
+------------------------*/
+
+#mobile-splash-top {
+  border: 2px solid black;
+  background-color: rgba(255,255,255,0.4);
+  text-align: center;
+}
+
+#mobile-splash-top > h1 {
+  margin: 5px auto;
+  font-size: 1.8em;
+}
+
+#mobile-splash-top > h2 {
+  margin: 5px auto;
+  font-size: 1.6em;
+}
+
+#mobile-content-container {
+  margin: 0 auto;
+  padding: 5px;
+  width: 75%;
+  border: 2px solid black;
+  background-color: rgba(255,255,255,0.4);
+  text-align: center;
+}
+
+#mobile-content-testarea {
+  margin: 0 auto;
+  padding: 5px;
+  width: 75%;
+  border: 2px solid black;
+  background-color: rgba(255,255,255,0.4);
+  text-align: center;
+}
+
+
+/*------------------------
+  Search Bar Elements
+------------------------*/
+
+#search-box {
+  position: relative;
+  margin: 1em auto 1em auto;
+  width: 90%;
+  background-color: rgba(255,255,255,1);
+}
+
+#search-orange {
+  float: right;
+  display: inline-block;
+  min-height: 48px;
+  background-image: url("http://localhost:4567/img/suitcase_travel.png");
+  background-size: 52px;
+  background-position: center;
+  background-color: rgba(254,211,83,1);
+  width: 3.55em;
+}
+
+#search-textbox > form > input[type="text"] {
+  text-align: center;
+  font-size: 1.5em;
+  height: 48px;
+  display: inline-block;
+  width: 80%;
+  border: none;
+}
+
+#search-textbox > form > input[type="text"]:focus {
+  outline: none;
+}
+
