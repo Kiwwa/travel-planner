@@ -13,33 +13,66 @@ get '/' do
   erb :index
 end
 
-get '/testing' do
+get '/trip' do
+  trip_id = params[:id]
+end
+
+get '/api/trip' do
+  content_type :json
+  trip = Trip.find_by(id: params[:id])
+  trip.to_json
+end
+
+get '/api/place' do
+  content_type :json
+  place = Place.find_by(id: params[:id])
+  place.to_json
+end
+
+get '/api/location' do
+  content_type :json
+  location = Location.find_by(id: params[:id])
+  location.to_json
+end
+
+post '/api/trip' do
+  content_type :json
   trip_created = Trip.create({
-    name: 'Test Trip'
+    :name => params[:name]
   })
+  trip_created.to_json
+end
 
+post '/api/place' do
+  content_type :json
   place_created = Place.create({
-    trip_id:      trip_created.id,
-    arrival:      "15/01/2014",
-    departing:    "17/01/2014",
-    accomodation: "Hotel California",
-    stuff_to_do:  "Such a loveeely place." 
+    :trip_id      => params[:trip_id],
+    :arrival      => params[:arrival],
+    :departing    => params[:departing],
+    :accomodation => params[:accom],
+    :stuff_to_do  => params[:todo] 
   })
+  place_created.to_json
+end
 
+post '/api/location' do
+  content_type :json
   location_created = Location.create({
-    place_id:      place_created.id,
-    latitude:      37.795284,
-    longitude:     144.95756299999994,
-    street_number: 57,
-    route:         "Royal Parade",
-    locality:      "Parkville",
-    admin_area:    "VIC",
-    country:       "Australia",
-    post_code:     3052
+    :place_id      => params[:place_id],
+    :latitude      => params[:latitude],
+    :longitude     => params[:longitude],
+    :street_number => params[:street_num],
+    :route         => params[:route],
+    :locality      => params[:locality],
+    :admin_area    => params[:admin_area],
+    :country       => params[:country],
+    :full_address  => params[:full_address],
+    :post_code     => params[:post_code]
   })
+  location_created.to_json
+end
 
-  @test_trip = trip_created
-  @test_place = place_created
-  @test_location = location_created
-  erb :testing
+delete '/api/trip' do
+  trip = Trip.find_by(id: params[:trip_id])
+  user.destroy
 end

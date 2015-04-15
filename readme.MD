@@ -6,6 +6,25 @@ Travellr assists in the planning of a long-term, multi-location holiday/explorat
 Quickstart
 ----------
 
+API Access
+----------
+
+Trips, Places and Locations can be accessed via GET requests to /api/;
+
+* localhost:4567/api/trip/?id=123
+* localhost:4567/api/place/?id=123
+* localhost:4567/api/place/?id=123
+
+Data can be added to the database via POST requests to /api/;
+
+Trip args: name
+Place args: trip_id, arrival, departing, accom, todo
+Location args: place_id, lat, lng, street_num, route, locality, admin_area, country, post_code
+
+Trips can be deleted from the database via DELETE requests to /api/;
+
+* localhost:4567/api/trip?id=123
+
 Technology Use
 --------------
 
