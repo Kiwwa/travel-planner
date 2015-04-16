@@ -1,0 +1,76 @@
+<div class="span-12" id="mobile-splash-top">  
+  
+
+  <img style="width:100vw" src="https://maps.googleapis.com/maps/api/staticmap?size=600x350&amp;scale=1&amp;path=color:0xff0000|geodesic:true|<%= @locations %>" alt="" alt="">
+  <form action="">
+    <input class="input-textbox" id="title" type="text">
+  </form>
+  
+</div>
+
+<div class="span-12">
+  <% @current_trip.places.order(:id).each do |place| %>
+  <div id="content-box-<%= place.id %>" class="mobile-trip-content-box effect1">
+    <div class="mobile-trip-content-top">
+      <h2><%= place.location.full_address.split(',')[0..1].join(", ") %></h2>
+      <img src="http://localhost:4567/img/close.png" onclick="delete_place(<%= place.id %>)">
+    </div>
+    <form action="">
+      <label for="arrive">Arrive</label>
+      <input id="arrive-<%= place.id %>" class="datepicker" type="text" value="<%= place.arrival %>">
+      <br>
+      <label for="depart">Depart</label>
+      <input id="depart-<%= place.id %>" class="datepicker" type="text" value="<%= place.departing %>">
+      <br>
+      <label for="todo">Todo</label>
+      <input id="todo-<%= place.id %>" type="text" value="<%= place.stuff_to_do %>">
+      <br>
+      <label for="accom">Accom</label>
+      <input id="accom-<%= place.id %>" type="text" value="<%= place.accomodation %>">  
+    </form>
+    <div class="mobile-trip-content-bottom">
+      <div class="mobile-trip-save-button" onclick="update_place(<%= place.id %>)">Save</div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<script>
+  $(function() {
+    $( ".datepicker" ).datepicker();
+    $( "#anim" ).change(function() {
+      $( "#arrive-date" ).datepicker( "option", "showAnim", $( this ).val() );
+    });
+  });
+
+  function update_place(place_id) {
+    $.ajax({
+      url: "/api/place",
+      type: "PUT",
+      data: {
+        place_id: place_id,
+        arrival: $("#arrive-" + place_id).val(),
+        departing: $("#depart-" + place_id).val(),
+        accom: $("#accom-" + place_id).val(),
+        todo: $("#todo-" + place_id).val(), 
+      },
+      success: function(data, textStatus, jqXHR) {
+        console.log("updated for place_id: " + place_id);
+      }
+    });
+  }
+
+    function delete_place(place_id) {
+    $.ajax({
+      url: "/api/place",
+      type: "DELETE",
+      data: {
+        place_id: place_id,
+      },
+      success: function(data, textStatus, jqXHR) {
+        console.log("deleted place_id: " + place_id);
+      }
+    });
+    $("#content-box-" + place_id).slideUp("normal", function() { $(this).remove(); } );
+  }
+</script>

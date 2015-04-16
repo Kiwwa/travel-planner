@@ -15,6 +15,15 @@ end
 
 get '/trip' do
   trip_id = params[:id]
+  @current_trip = Trip.find_by(id: trip_id)
+  
+  temp_loc = ''
+  @current_trip.places.order(:id).each do |place|
+    temp_loc << "#{place.location.latitude},#{place.location.longitude}|"
+  end
+
+  @locations = temp_loc[0...-1]
+  erb :trip
 end
 
 get '/api/trip' do
@@ -75,4 +84,20 @@ end
 delete '/api/trip' do
   trip = Trip.find_by(id: params[:trip_id])
   user.destroy
+end
+
+delete '/api/place' do
+  place = Place.find_by(id: params[:place_id])
+  place.location.destroy
+  place.destroy
+end
+
+put '/api/place' do
+  place = Place.find_by(id: params[:place_id])
+  place.update({
+    :arrival       => params[:arrival], 
+    :departing     => params[:departing],
+    :accomodation  => params[:accom],
+    :stuff_to_do   => params[:todo]
+  })
 end

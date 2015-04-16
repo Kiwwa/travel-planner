@@ -50,6 +50,19 @@ var places_obj = {
         autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
       });
     }
+  },
+  resetLocation: function() {
+    console.log("I GOT HERE FINE")
+    places_obj.latitude = null;
+    places_obj.longitude = null;
+    places_obj.street_number = null;
+    places_obj.route = null;
+    places_obj.locality = null;
+    places_obj.administrative_area_level_1 = null;
+    places_obj.country = null;
+    places_obj.postal_code = null;
+    places_obj.full_address = null;
+    console.log("I FINISHED FINE")
   }
 }
 

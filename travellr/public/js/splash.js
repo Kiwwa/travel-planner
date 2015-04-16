@@ -29,27 +29,28 @@ var trip = {
         trip_id: trip.trip_id,
       },
       success: function(data, textStatus, jqXHR) {
+        trip.places.push(data.id);
         console.log('place success');
-      }
-    });
-
-    contructed_location = $.ajax({
-      url: "/api/location",
-      type: "POST",
-      data: {
-        latitude: loc.latitude,
-        longitude: loc.longitude,
-        street_number: loc.street_number,
-        route: loc.route,
-        locality: loc.locality,
-        admin_area: loc.administrative_area_level_1,
-        country: loc.country,
-        post_code: loc.postal_code,
-        full_address: loc.full_address,
-        place_id: constructed_place.id
-      },
-      success: function(data, textStatus, jqXHR) {
-        console.log('location success');
+        contructed_location = $.ajax({
+          url: "/api/location",
+          type: "POST",
+          data: {
+            latitude: loc.latitude,
+            longitude: loc.longitude,
+            street_number: loc.street_number,
+            route: loc.route,
+            locality: loc.locality,
+            admin_area: loc.administrative_area_level_1,
+            country: loc.country,
+            post_code: loc.postal_code,
+            full_address: loc.full_address,
+            place_id: data.id
+          },
+          success: function(data, textStatus, jqXHR) {
+            console.log('location success');
+            places_obj.resetLocation();
+          }
+        });
       }
     });
   },
@@ -58,13 +59,20 @@ var trip = {
 function loc_add_btn_press() { 
   trip_created = trip.createTrip();
   
+  $("#mobile-content-container").fadeIn("slow");
+  $("#mobile-content-button").fadeIn("slow");
+
+  $("#mobile-content-button").click(function() {
+    window.location = "http://localhost:4567/trip?id=" + trip.trip_id;
+  });
+
   // TODO: implement this with a javascript "promise"
   setTimeout(function(){ 
     trip.storePlace(places_obj); 
   }, 200);
+
   var $autocomp = $('#autocomplete');
   $('#mobile-content-container ul').append("<li>" + $autocomp.val());
   $('#mobile-content-container ul').append("<li>" + "<img src='http://localhost:4567/img/arrow-down.png'>");
   $autocomp.val('');
-
 }
