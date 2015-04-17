@@ -63,7 +63,7 @@ function loc_add_btn_press() {
   $("#mobile-content-button").fadeIn("slow");
 
   $("#mobile-content-button").click(function() {
-    window.location = "http://localhost:4567/trip?id=" + trip.trip_id;
+    window.location = window.location.pathname + "/trip?id=" + trip.trip_id;
   });
 
   // TODO: implement this with a javascript "promise"
@@ -73,6 +73,6 @@ function loc_add_btn_press() {
 
   var $autocomp = $('#autocomplete');
   $('#mobile-content-container ul').append("<li>" + $autocomp.val());
-  $('#mobile-content-container ul').append("<li>" + "<img src='http://localhost:4567/img/arrow-down.png'>");
+  $('#mobile-content-container ul').append("<li>" + "<img src='/img/arrow-down.png'>");
   $autocomp.val('');
 }
