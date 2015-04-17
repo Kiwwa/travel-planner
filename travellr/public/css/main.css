@@ -82,6 +82,27 @@ label{
   font-family: 'Special Elite', cursive;
 }
 
+#mobile-splash-top > form {
+  display:inline-block;
+}
+
+#mobile-title-button {
+  display:inline;
+  text-align: center;
+  background: rgba(254,211,83,1);
+  color: #ffffff;
+  font-size: 4vh;
+  margin-left: 1vw;
+  font-family: 'Special Elite', cursive;
+  padding: 10px 10px 0px 10px;
+  text-decoration: none;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-box-shadow: 0 3px 0 0 rgba(227,173,11,1);
+          box-shadow: 0 3px 0 0 rgba(227,173,11,1);;
+}
+
 #mobile-content-container {
   position: relative;
   margin: 0 auto 1em auto;
@@ -161,7 +182,7 @@ label{
           box-shadow: 0 10px 6px -6px rgba(51,51,51,1);
 }
 
-div.ui-datepicker{
+div.ui-datepicker {
  font-size:11px;
 }
 
@@ -176,6 +197,20 @@ div.ui-datepicker{
 }
 
 .mobile-trip-content-box form > input[type="text"]:focus {
+  outline: none;
+}
+
+#trip-title {
+  text-align: center;
+  font-size: 1.5em;
+  height: 7vh;
+  display: inline-block;
+  width: 50vw;
+  margin: 1vh 0;
+  border: none;
+}
+
+#trip-title {
   outline: none;
 }
 

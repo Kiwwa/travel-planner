@@ -2,10 +2,15 @@
   
 
   <img style="width:100vw" src="https://maps.googleapis.com/maps/api/staticmap?size=600x350&amp;scale=1&amp;path=color:0xff0000|geodesic:true|<%= @locations %>" alt="" alt="">
+
+  <% if @current_trip.name == "" %>
   <form action="">
-    <input class="input-textbox" id="title" type="text">
+    <input class="input-textbox" id="trip-title" type="text">
   </form>
-  
+  <div id="mobile-title-button" onclick="update_trip(<%= params[:id] %>)">Save</div>
+  <% else %>
+  <h2 onclick="edit_title()"><%= @current_trip.name %></h2>
+  <% end %>
 </div>
 
 <div class="span-12">
@@ -56,11 +61,12 @@
       },
       success: function(data, textStatus, jqXHR) {
         console.log("updated for place_id: " + place_id);
+        $("#content-box-" + place_id).fadeOut(100).fadeIn(100);
       }
     });
   }
 
-    function delete_place(place_id) {
+  function delete_place(place_id) {
     $.ajax({
       url: "/api/place",
       type: "DELETE",
@@ -72,5 +78,27 @@
       }
     });
     $("#content-box-" + place_id).slideUp("normal", function() { $(this).remove(); } );
+  }
+
+  function update_trip(trip_id) {
+    $.ajax({
+      url: "/api/trip",
+      type: "PUT",
+      data: {
+        trip_id: trip_id,
+        name: $('#trip-title').val(),
+      },
+      success: function(data, textStatus, jqXHR) {
+        console.log("updated trip_id: " + trip_id);
+      }
+    });
+    var tripTitle = $("#trip-title").val();
+    $("#mobile-splash-top > form").remove();
+    $("#mobile-title-button").replaceWith("<h2 onclick='edit_title()'>" + tripTitle + "</h2>");
+  }
+
+  function edit_title() {
+    var tripTitle = $("#mobile-splash-top > h2").html();
+    $('#mobile-splash-top > h2').replaceWith("<form action=''><input class='input-textbox' id='trip-title' value='" + tripTitle + "' type='text'></form><div id='mobile-title-button' onclick='update_trip(" + <%= params[:id] %> + ")'>Save</div>");
   }
 </script>

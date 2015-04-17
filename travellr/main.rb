@@ -9,6 +9,10 @@ require_relative 'place'
 require_relative 'trip'
 require_relative 'config'
 
+after do
+ ActiveRecord::Base.connection.close
+end
+
 get '/' do
   erb :index
 end
@@ -90,6 +94,13 @@ delete '/api/place' do
   place = Place.find_by(id: params[:place_id])
   place.location.destroy
   place.destroy
+end
+
+put '/api/trip' do
+  trip = Trip.find_by(id: params[:trip_id])
+  trip.update({
+    :name => params[:name]
+  }) 
 end
 
 put '/api/place' do
