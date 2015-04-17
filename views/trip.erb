@@ -2,8 +2,7 @@
   
 
   <img style="width:100vw" src="https://maps.googleapis.com/maps/api/staticmap?size=600x350&amp;scale=1&amp;path=color:0xff0000|geodesic:true|<%= @locations %>" alt="" alt="">
-
-  <% if @current_trip.name == "" %>
+  <% if !@current_trip.name? %>
   <form action="">
     <input class="input-textbox" id="trip-title" type="text">
   </form>
