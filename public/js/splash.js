@@ -69,7 +69,7 @@ function loc_add_btn_press() {
   // TODO: implement this with a javascript "promise"
   setTimeout(function(){ 
     trip.storePlace(places_obj); 
-  }, 200);
+  }, 500);
 
   var $autocomp = $('#autocomplete');
   $('#mobile-content-container ul').append("<li>" + $autocomp.val());
