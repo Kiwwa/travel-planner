@@ -16,7 +16,7 @@ body {
   padding: 0;
   width: 100%;
   font-family: sans-serif;
-  background: url("http://localhost:4567/img/cover-4.jpg");
+  background: url("/img/cover-4.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -245,7 +245,7 @@ div.ui-datepicker {
 #search-orange {
   float: right;
   min-height: 7vh;
-  background-image: url("http://localhost:4567/img/suitcase_travel.png");
+  background-image: url("/img/suitcase_travel.png");
   background-size: 6vh;
   background-repeat: no-repeat;
   background-position: center;
