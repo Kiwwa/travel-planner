@@ -1,8 +1,10 @@
 require 'sinatra'
-require 'sinatra/reloader'
 require 'pg'
-require 'pry'
 require 'active_record'
+
+# only required in dev environment
+# require 'sinatra/reloader' 
+# require 'pry'
 
 require_relative 'location'
 require_relative 'place'
