@@ -63,7 +63,7 @@ function loc_add_btn_press() {
   $("#mobile-content-button").fadeIn("slow");
 
   $("#mobile-content-button").click(function() {
-    window.location = window.location.pathname + "/trip?id=" + trip.trip_id;
+    window.location = window.location.href + "trip?id=" + trip.trip_id;
   });
 
   // TODO: implement this with a javascript "promise"
