@@ -17,7 +17,7 @@
   <div id="content-box-<%= place.id %>" class="mobile-trip-content-box effect1">
     <div class="mobile-trip-content-top">
       <h2><%= place.location.full_address.split(',')[0..1].join(", ") %></h2>
-      <img src="http://localhost:4567/img/close.png" onclick="delete_place(<%= place.id %>)">
+      <img src="img/close.png" onclick="delete_place(<%= place.id %>)">
     </div>
     <form action="">
       <label for="arrive">Arrive</label>
