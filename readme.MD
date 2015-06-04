@@ -77,7 +77,7 @@ Style Issues -
 Logic issues -
 
 * GPS "center"/"average" coords need to be calculated for guaranteed correct map viewing (aside from unsolvable edge-cases)
-* Dealing with 
+* Dealing with the "tied together" nature of the series of AJAX calls; async nature makes this difficult, JS-promises will help alieviate?
 
 Spec Built For
 --------------
